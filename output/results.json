@@ -1,0 +1,178 @@
+{
+  "linear_chain": {
+    "scenario": "linear_chain_L15_FPR0.15_CS3",
+    "n_seeds": 100,
+    "mean_unscored_contamination": 0.1293333333333333,
+    "mean_scored_contamination": 0.028000000000000004,
+    "contamination_reduction_pct": 78.35051546391753,
+    "mean_unscored_fdr": 0.4000357142857143,
+    "mean_scored_fdr": 0.12533333333333332,
+    "fdr_reduction_pct": 68.66946403594918,
+    "mean_gated_nodes": 1.42,
+    "statistical_test": {
+      "t_stat": 10.267656926536937,
+      "p_value": 2.85366675582171e-17,
+      "significant": "True"
+    }
+  },
+  "branching_cascade": {
+    "scenario": "branching_D4_B2_FPR0.15",
+    "n_seeds": 100,
+    "mean_unscored_contamination": 0.1532258064516129,
+    "mean_scored_contamination": 0.03290322580645161,
+    "contamination_reduction_pct": 78.52631578947368,
+    "mean_unscored_fdr": 1.0,
+    "mean_scored_fdr": 0.66,
+    "fdr_reduction_pct": 34.0,
+    "mean_gated_nodes": 3.58,
+    "statistical_test": {
+      "t_stat": 17.160822580745247,
+      "p_value": 1.990844563247434e-31,
+      "significant": "True"
+    }
+  },
+  "sensitivity_analysis": [
+    {
+      "scenario": "linear_chain_L15_FPR0.15_CS3",
+      "n_seeds": 50,
+      "mean_unscored_contamination": 0.128,
+      "mean_scored_contamination": 0.13466666666666668,
+      "contamination_reduction_pct": -5.2083333333333455,
+      "mean_unscored_fdr": 0.41054761904761905,
+      "mean_scored_fdr": 0.43476190476190474,
+      "fdr_reduction_pct": -5.898045583715125,
+      "mean_gated_nodes": 0.0,
+      "statistical_test": {
+        "t_stat": -0.4300065817837657,
+        "p_value": 0.6690761216901553,
+        "significant": "False"
+      },
+      "threshold": 0.1
+    },
+    {
+      "scenario": "linear_chain_L15_FPR0.15_CS3",
+      "n_seeds": 50,
+      "mean_unscored_contamination": 0.128,
+      "mean_scored_contamination": 0.13466666666666668,
+      "contamination_reduction_pct": -5.2083333333333455,
+      "mean_unscored_fdr": 0.41054761904761905,
+      "mean_scored_fdr": 0.43476190476190474,
+      "fdr_reduction_pct": -5.898045583715125,
+      "mean_gated_nodes": 0.0,
+      "statistical_test": {
+        "t_stat": -0.4300065817837657,
+        "p_value": 0.6690761216901553,
+        "significant": "False"
+      },
+      "threshold": 0.2
+    },
+    {
+      "scenario": "linear_chain_L15_FPR0.15_CS3",
+      "n_seeds": 50,
+      "mean_unscored_contamination": 0.128,
+      "mean_scored_contamination": 0.10800000000000003,
+      "contamination_reduction_pct": 15.62499999999998,
+      "mean_unscored_fdr": 0.41054761904761905,
+      "mean_scored_fdr": 0.3728095238095237,
+      "fdr_reduction_pct": 9.19213593922174,
+      "mean_gated_nodes": 0.4,
+      "statistical_test": {
+        "t_stat": 1.341640786499874,
+        "p_value": 0.18589736188050068,
+        "significant": "False"
+      },
+      "threshold": 0.3
+    },
+    {
+      "scenario": "linear_chain_L15_FPR0.15_CS3",
+      "n_seeds": 50,
+      "mean_unscored_contamination": 0.128,
+      "mean_scored_contamination": 0.036000000000000004,
+      "contamination_reduction_pct": 71.875,
+      "mean_unscored_fdr": 0.41054761904761905,
+      "mean_scored_fdr": 0.153,
+      "fdr_reduction_pct": 62.73270312590616,
+      "mean_gated_nodes": 1.48,
+      "statistical_test": {
+        "t_stat": 6.907757962280748,
+        "p_value": 9.218372857697371e-09,
+        "significant": "True"
+      },
+      "threshold": 0.4
+    },
+    {
+      "scenario": "linear_chain_L15_FPR0.15_CS3",
+      "n_seeds": 50,
+      "mean_unscored_contamination": 0.128,
+      "mean_scored_contamination": 0.0026666666666666666,
+      "contamination_reduction_pct": 97.91666666666666,
+      "mean_unscored_fdr": 0.41054761904761905,
+      "mean_scored_fdr": 0.011666666666666665,
+      "fdr_reduction_pct": 97.15826712289045,
+      "mean_gated_nodes": 2.04,
+      "statistical_test": {
+        "t_stat": 10.451029429932145,
+        "p_value": 4.5602694587794703e-14,
+        "significant": "True"
+      },
+      "threshold": 0.5
+    },
+    {
+      "scenario": "linear_chain_L15_FPR0.15_CS3",
+      "n_seeds": 50,
+      "mean_unscored_contamination": 0.128,
+      "mean_scored_contamination": 0.0,
+      "contamination_reduction_pct": 100.0,
+      "mean_unscored_fdr": 0.41054761904761905,
+      "mean_scored_fdr": 0.0,
+      "fdr_reduction_pct": 100.0,
+      "mean_gated_nodes": 2.32,
+      "statistical_test": {
+        "t_stat": 10.782753135935424,
+        "p_value": 1.5547638180514407e-14,
+        "significant": "True"
+      },
+      "threshold": 0.6
+    },
+    {
+      "scenario": "linear_chain_L15_FPR0.15_CS3",
+      "n_seeds": 50,
+      "mean_unscored_contamination": 0.128,
+      "mean_scored_contamination": 0.0,
+      "contamination_reduction_pct": 100.0,
+      "mean_unscored_fdr": 0.41054761904761905,
+      "mean_scored_fdr": 0.0,
+      "fdr_reduction_pct": 100.0,
+      "mean_gated_nodes": 3.3,
+      "statistical_test": {
+        "t_stat": 10.782753135935424,
+        "p_value": 1.5547638180514407e-14,
+        "significant": "True"
+      },
+      "threshold": 0.7
+    },
+    {
+      "scenario": "linear_chain_L15_FPR0.15_CS3",
+      "n_seeds": 50,
+      "mean_unscored_contamination": 0.128,
+      "mean_scored_contamination": 0.0,
+      "contamination_reduction_pct": 100.0,
+      "mean_unscored_fdr": 0.41054761904761905,
+      "mean_scored_fdr": 0.0,
+      "fdr_reduction_pct": 100.0,
+      "mean_gated_nodes": 4.14,
+      "statistical_test": {
+        "t_stat": 10.782753135935424,
+        "p_value": 1.5547638180514407e-14,
+        "significant": "True"
+      },
+      "threshold": 0.8
+    }
+  ],
+  "parameters": {
+    "chain_length": 15,
+    "false_positive_rate": 0.15,
+    "confidence_threshold": 0.4,
+    "n_seeds": 100
+  }
+}
