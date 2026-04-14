@@ -30,6 +30,7 @@ from ecv.adapters.base import AdaptedResult
 from ecv.adapters.evaluator import AutoResearchEvaluatorAdapter
 from ecv.adapters.ara import ARAAdapter
 from ecv.adapters.vanilla import VanillaAutoresearchAdapter
+from ecv.adapters.karpathy import KarpathyAutoresearchAdapter
 
 
 # Default data paths (relative to home directory)
@@ -38,6 +39,7 @@ DATA_PATHS = {
     "evaluator": HOME / "unktok/dev/auto-research-evaluator",
     "ara": HOME / "unktok/dev/autonomous-research-agent/research-workspace",
     "vanilla": HOME / "unktok/dev/unktok-agent/exp-2026-01-13-vanilla-autoresearch",
+    "karpathy": HOME / "unktok/dev/autoresearch-lite/results.tsv",
 }
 
 
@@ -279,7 +281,7 @@ def main() -> None:
         help="Print per-result details",
     )
     parser.add_argument(
-        "--source", choices=["evaluator", "ara", "vanilla", "all"],
+        "--source", choices=["evaluator", "ara", "vanilla", "karpathy", "all"],
         default="all",
         help="Which data source to analyze (default: all)",
     )
@@ -369,6 +371,35 @@ def main() -> None:
                 threshold=args.threshold,
             )
             all_summaries["vanilla_cascade"] = cascade_summary
+        else:
+            print(f"  Data path not found: {path}")
+
+    # ================================================================
+    # 4. Karpathy Autoresearch-Lite
+    # ================================================================
+    if args.source in ("karpathy", "all"):
+        print_header("4. Karpathy Autoresearch-Lite (CIFAR-10 experiments)")
+
+        adapter = KarpathyAutoresearchAdapter()
+        path = DATA_PATHS["karpathy"]
+        if path.exists():
+            results = adapter.load(path)
+            summary = analyze_results(
+                results, scorer, engine,
+                adapter.source_name(),
+                threshold=args.threshold,
+                verbose=args.verbose,
+            )
+            all_summaries["karpathy"] = summary
+
+            # Cascade analysis using keep chain
+            edges = adapter.build_cascade_chain(results)
+            cascade_summary = analyze_cascade(
+                results, edges, scorer, engine,
+                "Karpathy keep chain",
+                threshold=args.threshold,
+            )
+            all_summaries["karpathy_cascade"] = cascade_summary
         else:
             print(f"  Data path not found: {path}")
 

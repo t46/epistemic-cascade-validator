@@ -1,144 +1,146 @@
 {
-  "evaluator": {
-    "source": "auto-research-evaluator",
-    "n_results": 13,
-    "n_passed": 13,
-    "n_gated": 0,
-    "gating_rate": 0.0,
-    "mean_confidence": 0.6253863305678357,
-    "median_confidence": 0.6249800697391347,
-    "std_confidence": 0.0460298095182127,
-    "min_confidence": 0.5325449501109947,
-    "max_confidence": 0.7012637858513778,
-    "mean_uncertainty": 0.17379090599394467,
-    "risk_distribution": {
-      "low": 2,
-      "medium": 11,
-      "high": 0,
-      "critical": 0
-    },
-    "component_means": {
-      "reproduction": 0.4725274725274726,
-      "effect_size": 0.8670146328936371,
-      "statistical": 0.6819603462058523,
-      "code_quality": 0.7870769230769231
-    }
-  },
-  "ara": {
-    "source": "autonomous-research-agent",
-    "n_results": 4,
-    "n_passed": 4,
-    "n_gated": 0,
-    "gating_rate": 0.0,
-    "mean_confidence": 0.5082081756922527,
-    "median_confidence": 0.5062310134961079,
-    "std_confidence": 0.006782764717569879,
-    "min_confidence": 0.5015067962796337,
-    "max_confidence": 0.5188638794971615,
-    "mean_uncertainty": 0.1929558321463301,
-    "risk_distribution": {
-      "low": 0,
-      "medium": 4,
-      "high": 0,
-      "critical": 0
-    },
-    "component_means": {
-      "reproduction": 0.6541666666666667,
-      "effect_size": 0.7847454449935467,
-      "statistical": 0.2344500823571784,
-      "code_quality": 0.57
-    }
-  },
-  "ara_cascade": {
-    "source": "ARA claim chain",
-    "n_nodes": 4,
-    "n_edges": 4,
-    "chain_confidences": {
-      "claim-001": 0.5092103371228806,
-      "claim-003": 0.5015067962796337,
-      "claim-002": 0.25626096265602344,
-      "claim-004": 0.13296455724738154
-    },
-    "risk_points": [
-      {
-        "node": "claim-002",
-        "local_confidence": 0.5032516898693351,
-        "chain_confidence": 0.25626096265602344
-      },
-      {
-        "node": "claim-004",
-        "local_confidence": 0.5188638794971615,
-        "chain_confidence": 0.13296455724738154
-      }
-    ]
-  },
-  "vanilla": {
-    "source": "vanilla-autoresearch",
-    "n_results": 6,
-    "n_passed": 3,
+  "karpathy": {
+    "source": "karpathy-autoresearch-lite",
+    "n_results": 21,
+    "n_passed": 18,
     "n_gated": 3,
-    "gating_rate": 0.5,
-    "mean_confidence": 0.5092143876139744,
-    "median_confidence": 0.4822782826798351,
-    "std_confidence": 0.20461181303081577,
-    "min_confidence": 0.3047733264370333,
-    "max_confidence": 0.7473963519886185,
-    "mean_uncertainty": 0.1442592633391594,
+    "gating_rate": 0.14285714285714285,
+    "mean_confidence": 0.5424033591564426,
+    "median_confidence": 0.5907628749220768,
+    "std_confidence": 0.1569841483835711,
+    "min_confidence": 0.21576519951947243,
+    "max_confidence": 0.8481720526508849,
+    "mean_uncertainty": 0.16863116733827,
     "risk_distribution": {
-      "low": 2,
-      "medium": 1,
+      "low": 3,
+      "medium": 15,
       "high": 3,
       "critical": 0
     },
     "component_means": {
-      "reproduction": 0.4047619047619048,
-      "effect_size": 0.8438624321663365,
-      "statistical": 0.5293125001327647,
-      "code_quality": 0.6200000000000001
+      "reproduction": 0.43537414965986393,
+      "effect_size": 0.6138734685288183,
+      "statistical": 0.6008101800378288,
+      "code_quality": 0.8585714285714287
     }
   },
-  "vanilla_cascade": {
-    "source": "Vanilla hypothesis chain",
-    "n_nodes": 6,
-    "n_edges": 3,
+  "karpathy_cascade": {
+    "source": "Karpathy keep chain",
+    "n_nodes": 21,
+    "n_edges": 20,
     "chain_confidences": {
-      "efficient_llm_inference/comb_1": 0.3047733264370333,
-      "efficient_llm_inference/cons_1": 0.3070833926365691,
-      "efficient_llm_inference/cont_1": 0.307692213390835,
-      "efficient_llm_inference/comb_2": 0.2277864723624751,
-      "efficient_llm_inference/cons_2": 0.22462434337312676,
-      "efficient_llm_inference/cont_2": 0.2021120463548274
+      "2108755": 0.6141519302934214,
+      "61b4eb4": 0.36281815997908456,
+      "1a88964": 0.42996071771286154,
+      "d0545bb": 0.25702082623221434,
+      "666e157": 0.34419631551253066,
+      "98aea59": 0.5209065033564744,
+      "437c019": 0.2289259636641339,
+      "72ce38e": 0.11239349562770043,
+      "7e11bde": 0.22509109438643798,
+      "f83873e": 0.34709593238318104,
+      "1261844": 0.20069814040139564,
+      "957e801": 0.23665094862370764,
+      "8d7d7c1": 0.34668620767994834,
+      "8f0cc3f": 0.22584268091316706,
+      "d1b77b9": 0.3646351776344184,
+      "e7e8ecb": 0.3084024645418765,
+      "c7b5349": 0.3645413955482131,
+      "d13e3e8": 0.33224298796789914,
+      "0000000": 0.11239349562770043,
+      "44fb21c": 0.2709481586043504,
+      "febd989": 0.16267063506958945
     },
     "risk_points": [
       {
-        "node": "efficient_llm_inference/comb_1",
-        "local_confidence": 0.3047733264370333,
-        "chain_confidence": 0.3047733264370333
+        "node": "61b4eb4",
+        "local_confidence": 0.5907628749220768,
+        "chain_confidence": 0.36281815997908456
       },
       {
-        "node": "efficient_llm_inference/cons_1",
-        "local_confidence": 0.3070833926365691,
-        "chain_confidence": 0.3070833926365691
+        "node": "d0545bb",
+        "local_confidence": 0.41849713980287956,
+        "chain_confidence": 0.25702082623221434
       },
       {
-        "node": "efficient_llm_inference/cont_1",
-        "local_confidence": 0.307692213390835,
-        "chain_confidence": 0.307692213390835
+        "node": "666e157",
+        "local_confidence": 0.5604416407973921,
+        "chain_confidence": 0.34419631551253066
       },
       {
-        "node": "efficient_llm_inference/comb_2",
-        "local_confidence": 0.7473963519886185,
-        "chain_confidence": 0.2277864723624751
+        "node": "437c019",
+        "local_confidence": 0.43947610979905916,
+        "chain_confidence": 0.2289259636641339
       },
       {
-        "node": "efficient_llm_inference/cons_2",
-        "local_confidence": 0.7314766892619556,
-        "chain_confidence": 0.22462434337312676
+        "node": "72ce38e",
+        "local_confidence": 0.21576519951947243,
+        "chain_confidence": 0.11239349562770043
       },
       {
-        "node": "efficient_llm_inference/cont_2",
-        "local_confidence": 0.6568643519688352,
-        "chain_confidence": 0.2021120463548274
+        "node": "7e11bde",
+        "local_confidence": 0.4321141950351124,
+        "chain_confidence": 0.22509109438643798
+      },
+      {
+        "node": "f83873e",
+        "local_confidence": 0.6663305797617414,
+        "chain_confidence": 0.34709593238318104
+      },
+      {
+        "node": "1261844",
+        "local_confidence": 0.3852863020680142,
+        "chain_confidence": 0.20069814040139564
+      },
+      {
+        "node": "957e801",
+        "local_confidence": 0.454305997523243,
+        "chain_confidence": 0.23665094862370764
+      },
+      {
+        "node": "8d7d7c1",
+        "local_confidence": 0.6655440188326829,
+        "chain_confidence": 0.34668620767994834
+      },
+      {
+        "node": "8f0cc3f",
+        "local_confidence": 0.43355703846648863,
+        "chain_confidence": 0.22584268091316706
+      },
+      {
+        "node": "d1b77b9",
+        "local_confidence": 0.7000012003783449,
+        "chain_confidence": 0.3646351776344184
+      },
+      {
+        "node": "e7e8ecb",
+        "local_confidence": 0.5920495569832155,
+        "chain_confidence": 0.3084024645418765
+      },
+      {
+        "node": "c7b5349",
+        "local_confidence": 0.6998211640654921,
+        "chain_confidence": 0.3645413955482131
+      },
+      {
+        "node": "d13e3e8",
+        "local_confidence": 0.6378169322653546,
+        "chain_confidence": 0.33224298796789914
+      },
+      {
+        "node": "0000000",
+        "local_confidence": 0.21576519951947243,
+        "chain_confidence": 0.11239349562770043
+      },
+      {
+        "node": "44fb21c",
+        "local_confidence": 0.5201473908628305,
+        "chain_confidence": 0.2709481586043504
+      },
+      {
+        "node": "febd989",
+        "local_confidence": 0.6003754958420949,
+        "chain_confidence": 0.16267063506958945
       }
     ]
   }

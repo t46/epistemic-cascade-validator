@@ -8,16 +8,19 @@ Adapter hierarchy:
     AutoResearchEvaluatorAdapter  - 14 experiments from auto-research-evaluator
     ARAAdapter                    - ARA belief store (claims + ledger)
     VanillaAutoresearchAdapter    - vanilla autoresearch hypothesis pipeline
+    KarpathyAutoresearchAdapter   - Karpathy-style autoresearch-lite (results.tsv)
 """
 
 from ecv.adapters.base import BaseAdapter
 from ecv.adapters.evaluator import AutoResearchEvaluatorAdapter
 from ecv.adapters.ara import ARAAdapter
 from ecv.adapters.vanilla import VanillaAutoresearchAdapter
+from ecv.adapters.karpathy import KarpathyAutoresearchAdapter
 
 __all__ = [
     "BaseAdapter",
     "AutoResearchEvaluatorAdapter",
     "ARAAdapter",
     "VanillaAutoresearchAdapter",
+    "KarpathyAutoresearchAdapter",
 ]
