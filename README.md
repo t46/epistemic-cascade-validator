@@ -51,7 +51,14 @@ ecv/
   decision.py          # Confidence-aware decision engine
   comparison.py        # Statistical comparison framework
   visualization.py     # Matplotlib visualization
-main.py                # Demo runner with CLI args
+  adapters/            # Real-data source adapters
+    __init__.py
+    base.py            # BaseAdapter interface & AdaptedResult
+    evaluator.py       # auto-research-evaluator (14 experiments)
+    ara.py             # ARA belief store (claims + ledger)
+    vanilla.py         # vanilla autoresearch hypothesis pipeline
+main.py                # Simulation demo runner with CLI args
+validate_real_data.py  # Real-data validation runner
 output/                # Generated figures and results
 ```
 
@@ -108,6 +115,81 @@ sim.build_linear_chain(length=10, false_positive_rate=0.15, contamination_start=
 result = sim.run_with_scoring(confidence_threshold=0.4)
 print(f"Contamination rate: {result.contamination_rate:.3f}")
 ```
+
+## Real-Data Validation
+
+In addition to the simulation, ECV has been validated against three real autoresearch pipeline outputs. Each data source required a custom adapter to map its output format to ECV's `EvidencePacket` schema.
+
+### Data Sources
+
+| Source | Type | N | Description |
+|--------|------|---|-------------|
+| auto-research-evaluator | Paper meta-evaluation | 13 | Multi-phase analysis of autoresearch-generated papers (exp-2025-11-19 to exp-2025-12-02). Scores for methodology, statistical validity, reproducibility, etc. |
+| ARA belief store | Literature-review claims | 4 | Claims with confidence levels, evidence (for/against), fidelity ratings, and explicit dependency chains |
+| vanilla autoresearch | Hypothesis pipeline | 6 | Hypotheses with status (proposed/rejected), self-assessed confidence, and estimated novelty |
+
+### Results
+
+```
+Cross-Source Comparison:
+  Source                            N    Mean     Med     Std  Gated%
+  auto-research-evaluator          13  0.6254  0.6250  0.0460    0.0%
+  autonomous-research-agent         4  0.5082  0.5062  0.0068    0.0%
+  vanilla-autoresearch              6  0.5092  0.4823  0.2046   50.0%
+```
+
+Key observations:
+- **Evaluator experiments** cluster in the medium-confidence range (0.53-0.70), reflecting that all are published papers with reasonable quality
+- **ARA claims** are tightly clustered around 0.50, reflecting F1-fidelity evidence (abstract-only reads) with moderate self-reported confidence
+- **Vanilla hypotheses** show the widest spread (0.30-0.75): rejected hypotheses correctly receive low scores (~0.31), while proposed hypotheses with higher confidence and novelty receive higher scores (~0.73). The 50% gating rate correctly filters rejected hypotheses
+- **Cascade analysis** on ARA's dependency chain shows compounded confidence dropping from 0.51 (root claims) to 0.13 (downstream claim-004 which depends on three upstream claims), demonstrating uncertainty propagation in real epistemic chains
+
+### Usage
+
+```bash
+# Run validation against all data sources
+uv run validate_real_data.py
+
+# Verbose output with per-result details
+uv run validate_real_data.py --verbose
+
+# Single source
+uv run validate_real_data.py --source evaluator
+uv run validate_real_data.py --source ara
+uv run validate_real_data.py --source vanilla
+
+# Custom threshold
+uv run validate_real_data.py --threshold 0.5
+```
+
+### Adapter Design
+
+Each adapter implements `BaseAdapter` with a `load(path) -> list[AdaptedResult]` method. The `AdaptedResult` preserves provenance (source file, raw scores, mapping notes) alongside the derived `EvidencePacket`, enabling audit of the proxy mappings.
+
+```python
+from ecv.adapters import AutoResearchEvaluatorAdapter
+from ecv.confidence import ConfidenceScorer
+
+adapter = AutoResearchEvaluatorAdapter()
+results = adapter.load(Path("~/unktok/dev/auto-research-evaluator"))
+
+scorer = ConfidenceScorer()
+for r in results:
+    score = scorer.score(r.evidence)
+    print(f"{r.experiment_id}: {score.overall:.3f} ({r.mapping_notes[0]})")
+```
+
+### Limitations
+
+1. **Proxy mapping, not ground truth**: All EvidencePacket fields are derived from available metadata, not actual reproduction trials or effect size measurements. The scores reflect "how well-documented and self-consistent" the research is, not "how likely to reproduce."
+
+2. **Small sample (N=23)**: Insufficient for statistical calibration conclusions. The validation shows the system runs on real data and produces differentiated scores, but cannot assess accuracy.
+
+3. **No ground truth for gating decisions**: We cannot measure precision/recall of the gating decisions because we don't know which results are true/false positives.
+
+4. **Evaluator circularity**: The evaluator scores are LLM-generated assessments. Using LLM-assessed quality to validate an LLM-quality-scoring system has inherent circularity.
+
+5. **Shallow cascade depth**: The ARA chain has 2-3 levels of dependency. We cannot validate cascade behavior at the 10-15 node depths used in simulation.
 
 ## Connection to the Reproducibility Crisis
 
